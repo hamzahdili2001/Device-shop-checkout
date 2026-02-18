@@ -4,6 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Secure device shop checkout page for reviewing cart items, applying coupon codes, and completing contact details." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1D1D1F" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Device Shop Checkout" />
+  <meta property="og:description"
+    content="Review devices in your cart, apply coupon codes, and complete checkout details." />
+  <meta property="og:image" content="./thumbnail.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Device Shop Checkout" />
+  <meta name="twitter:description"
+    content="Review devices in your cart, apply coupon codes, and complete checkout details." />
+  <meta name="twitter:image" content="./thumbnail.jpg" />
 
   <link rel="icon" href="resources/favicon.ico" type="image/x-icon" sizes="96x96" />
 
@@ -17,17 +33,19 @@
 
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <div class="background">
+  <header class="background">
     <h1>Checkout <span id="items-count">3 items</span></h1>
-  </div>
+  </header>
 
-  <div class="content-container">
-    <div class="left-side">
+  <main id="main-content" class="content-container">
+    <section class="left-side" aria-labelledby="order-summary-title">
+      <h2 id="order-summary-title" class="sr-only">Order Summary</h2>
       <!-- Product 1 -->
       <div class="product">
         <div class="image">
-          <img src="./resources/Gold.png" alt="">
+          <img src="./resources/Gold.png" alt="iPhone 12 Pro in gold color">
         </div>
         <div class="content">
           <div class="product-info">
@@ -46,7 +64,7 @@
               <div class="many">
                 x 1
               </div>
-              <button class="remove">X</button>
+              <button class="remove" type="button" aria-label="Remove iPhone 12 Pro from cart">Remove</button>
             </div>
           </div>
         </div>
@@ -55,7 +73,7 @@
       <!-- Product 2 -->
       <div class="product">
         <div class="image">
-          <img src="./resources/Apple-watch.png" alt="">
+          <img src="./resources/Apple-watch.png" alt="Apple Watch in blue color">
         </div>
         <div class="content">
           <div class="product-info">
@@ -74,7 +92,7 @@
               <div class="many">
                 x 1
               </div>
-              <button class="remove">X</button>
+              <button class="remove" type="button" aria-label="Remove Apple Watch from cart">Remove</button>
             </div>
           </div>
         </div>
@@ -83,7 +101,7 @@
       <!-- Product 2 -->
       <div class="product">
         <div class="image">
-          <img src="./resources/iMac.png" alt="">
+          <img src="./resources/iMac.png" alt="iMac in green color">
         </div>
         <div class="content">
           <div class="product-info">
@@ -102,7 +120,7 @@
               <div class="many">
                 x 1
               </div>
-              <button class="remove">X</button>
+              <button class="remove" type="button" aria-label="Remove iMac from cart">Remove</button>
             </div>
           </div>
         </div>
@@ -111,11 +129,12 @@
 
 
       <div class="coupon-input">
-        <input type="text" placeholder="Enter coupon code">
-        <button>Apply Coupon</button>
+        <label for="coupon-code" class="sr-only">Coupon code</label>
+        <input id="coupon-code" name="coupon-code" type="text" autocomplete="off" placeholder="Enter coupon code">
+        <button type="button">Apply Coupon</button>
       </div>
 
-      <div class="total-container">
+      <div class="total-container" aria-live="polite" aria-atomic="true">
         <div class="sub-total">
           <h4>Sub Total</h4>
           <h4>$2597.00</h4>
@@ -129,37 +148,38 @@
           <h4>$3220.28</h4>
         </div>
       </div>
-    </div>
-    <div class="right-side">
+    </section>
+    <section class="right-side" aria-labelledby="contact-info-title">
       <h3>Contact Information</h3>
-      <div class="form-group">
-        <label for="name">First & Last name</label>
-        <input id="name" type="text" placeholder="Enter First & Last name">
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input id="email" type="email" placeholder="Enter First & Last name">
-      </div>
-
-      <div class="form-group form-flex">
-        <div>
-          <label for="country">Country</label>
-          <select id="country" name="country">
-            <option value="finland">Finland</option>
-          </select>
+      <form aria-labelledby="contact-info-title">
+        <h2 id="contact-info-title" class="sr-only">Contact Information</h2>
+        <div class="form-group">
+          <label for="name">First & Last name</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter First & Last name" required>
         </div>
-        <div>
-          <label for="post-code">Post Code</label>
-          <input id="post-code" type="text" placeholder="00270">
-        </div>
-      </div>
-      <button>Continue</button>
-      <form>
 
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="Enter Email Address" required>
+        </div>
+
+        <div class="form-group form-flex">
+          <div>
+            <label for="country">Country</label>
+            <select id="country" name="country" autocomplete="country-name" required>
+              <option value="finland">Finland</option>
+            </select>
+          </div>
+          <div>
+            <label for="post-code">Post Code</label>
+            <input id="post-code" name="post-code" type="text" inputmode="numeric" autocomplete="postal-code"
+              placeholder="00270" required>
+          </div>
+        </div>
+        <button type="submit">Continue</button>
       </form>
-    </div>
-  </div>
+    </section>
+  </main>
 
 </body>
 
